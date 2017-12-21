@@ -1,0 +1,11 @@
+{
+  "name": "belt_buffer",
+  "version": "0.1.3",
+  "title": "Belt Buffer",
+  "author": "Klonan",
+  "contact": "",
+  "homepage": "",
+  "description": "A buffer for your belts",
+  "factorio_version": "0.16",
+  "dependencies": ["base >= 0.16.5"]
+}
