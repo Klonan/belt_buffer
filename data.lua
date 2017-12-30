@@ -1,5 +1,15 @@
 local util = require "util"
 
+local tint = function(sprite, tint)
+  --local tint = tint or {}
+  local sprite = util.table.deepcopy(sprite)
+  sprite.tint = tint
+  if sprite.hr_version then
+    sprite.hr_version.tint = tint
+  end
+  return sprite
+end
+
 data:extend({
     {
     type = "loader",
@@ -13,16 +23,16 @@ data:extend({
     collision_box = {{-0.2, -0.01}, {0.2, 0.01}},
     selection_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selectable_in_game = false,
-    animation_speed_coefficient = 32,
-    belt_horizontal = basic_belt_horizontal,
-    belt_vertical = basic_belt_vertical,
-    ending_top = basic_belt_ending_top,
-    ending_bottom = basic_belt_ending_bottom,
-    ending_side = basic_belt_ending_side,
-    starting_top = basic_belt_starting_top,
-    starting_bottom = basic_belt_starting_bottom,
-    starting_side = basic_belt_starting_side,
-    speed = 1.03125,
+    animation_speed_coefficient = 32/2,
+    belt_horizontal = tint(basic_belt_horizontal),
+    belt_vertical = tint(basic_belt_vertical),
+    ending_top = tint(basic_belt_ending_top),
+    ending_bottom = tint(basic_belt_ending_bottom),
+    ending_side = tint(basic_belt_ending_side),
+    starting_top = tint(basic_belt_starting_top),
+    starting_bottom = tint(basic_belt_starting_bottom),
+    starting_side = tint(basic_belt_starting_side),
+    speed = 0.03125*4,
     structure =
     {
       direction_in =
@@ -237,6 +247,7 @@ data:extend({item})
 
 local item = util.table.deepcopy(data.raw.item["transport-belt"])
 item.name = "belt-buffer-proxy-hl"
+item.flags = {"hidden"}
 item.place_result = "belt-buffer-hl"
 item.icon = "__belt_buffer__/buffer-icon.png"
 item.localised_name = {"belt-buffer"}
@@ -245,6 +256,7 @@ data:extend({item})
 
 local item = util.table.deepcopy(data.raw.item["transport-belt"])
 item.name = "belt-buffer-proxy-vu"
+item.flags = {"hidden"}
 item.place_result = "belt-buffer-vu"
 item.icon = "__belt_buffer__/buffer-icon.png"
 item.localised_name = {"belt-buffer"}
@@ -253,6 +265,7 @@ data:extend({item})
 
 local item = util.table.deepcopy(data.raw.item["transport-belt"])
 item.name = "belt-buffer-proxy-hr"
+item.flags = {"hidden"}
 item.place_result = "belt-buffer-hr"
 item.icon = "__belt_buffer__/buffer-icon.png"
 item.localised_name = {"belt-buffer"}
@@ -261,6 +274,7 @@ data:extend({item})
 
 local item = util.table.deepcopy(data.raw.item["transport-belt"])
 item.name = "belt-buffer-proxy-vd"
+item.flags = {"hidden"}
 item.place_result = "belt-buffer-vd"
 item.icon = "__belt_buffer__/buffer-icon.png"
 item.localised_name = {"belt-buffer"}
